@@ -33,4 +33,10 @@ public class Category {
     //para que cada producto tiene un id unico, este sera la llave foranea
     @OneToMany(mappedBy="category") //union de uno hacia muchos
     private List<Product> products;
+
+    public void setId(Long id){
+    
+        this.id = id;
+    }
+    
 }

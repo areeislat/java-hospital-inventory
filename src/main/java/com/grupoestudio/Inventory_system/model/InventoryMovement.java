@@ -1,5 +1,7 @@
 package com.grupoestudio.Inventory_system.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,31 +14,29 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "product")
+@Table(name = "inventory_movement")
 @Data
 @NoArgsConstructor
-
-public class Product {
+public class InventoryMovement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable=false, unique = true)
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "id_product", nullable = false)
+    private Product product;
 
     @Column(nullable=false)
-    private double price;
+    private int quantity;
 
-    @Column(nullable=false) 
-    private int stock;
+    @Column(nullable=false)
+    private String type;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
-    private Category category;
+    @Column(nullable=false)
+    private LocalDateTime date;
 
-    public void setId(Long id){
-    
-        this.id = id;
+    public String getType(){
+        return type;
     }
 
 }
