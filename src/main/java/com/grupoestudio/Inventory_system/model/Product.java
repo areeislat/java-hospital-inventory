@@ -30,13 +30,21 @@ public class Product {
     @Column(nullable=false) 
     private int stock;
 
+    @Column(nullable=false)
+    private boolean active = true;
+
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
+
+    public void setActive(boolean active){
+        this.active = active;
+    }
 
     public void setId(Long id){
     
         this.id = id;
     }
+
 
 }

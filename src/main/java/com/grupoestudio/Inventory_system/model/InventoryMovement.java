@@ -1,6 +1,6 @@
 package com.grupoestudio.Inventory_system.model;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,10 +33,14 @@ public class InventoryMovement {
     private String type;
 
     @Column(nullable=false)
-    private LocalDateTime date;
+    private Date date;
 
     public String getType(){
         return type;
+    }
+
+    public void setDate(Date date){
+        this.date = date;
     }
 
 }
